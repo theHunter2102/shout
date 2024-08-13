@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "281604521444",
+    "project_id": "shout-85428",
+    "storage_bucket": "shout-85428.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281604521444:android:02859c634263721c02dbf1",
+        "android_client_info": {
+          "package_name": "com.example.shout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyvyOn049lT1WQ3NHXJv3X1DeXZQSvK44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
