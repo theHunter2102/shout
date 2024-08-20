@@ -1,18 +1,55 @@
+import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shout/src/ui/screens/forgot_password/forgot_screen.dart';
 import '../../../config/constants.dart';
 import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
+import '../../widgets/custom_dialog_widget.dart';
 import 'new_password_screen.dart';
 
-class Verify extends StatefulWidget {
+class VerifyCode extends StatefulWidget {
+  const VerifyCode({super.key});
+
   @override
   State<StatefulWidget> createState() {
-    return VerifyState();
+    return VerifyCodeState();
   }
 }
 
-class VerifyState extends State<Verify> {
+class VerifyCodeState extends State<VerifyCode> {
+
+  final emailAuth = EmailAuth(sessionName: 'shout otp');
+
+  String _otpCode = "";
+
+
+  Future<String?> getSaveOtp() async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getString('otp');
+  }
+
+  Future<void> verifyOTP(String OTP) async{
+
+      if(await getSaveOtp() == OTP){
+        AppNavigator.navigateToScreen(context, NewPassword());
+      }else{
+        showDialog(
+            context: context,
+            builder: (context) =>  const CustomDialogWidget(
+              content: 'OTP does not match',
+              type: DialogType.error,
+            )
+        );
+      }
+  }
+  void inputOtp(String otp)
+  {
+    setState(() {
+      _otpCode = otp;
+    });
+  }
 
 
   final defaultPinTheme = PinTheme(
@@ -96,8 +133,7 @@ class VerifyState extends State<Verify> {
                       defaultPinTheme: defaultPinTheme,
                       focusedPinTheme: focusPinTheme,
                       preFilledWidget: Text('-'),
-                      onCompleted: (pin) => debugPrint('---------------------'
-                          '----------------------------------------' + pin),
+                      onCompleted: (pin) => inputOtp(pin),
                     ),
               ),
               Positioned(
@@ -107,7 +143,7 @@ class VerifyState extends State<Verify> {
                 child: CustomButton(
                   borderColor: Colors.transparent,
                   onPressed: () {
-                    AppNavigator.navigateToScreen(context, NewPassword());
+                   verifyOTP(_otpCode);
                   },
                   text: 'Confirm',
                 ),
@@ -119,8 +155,8 @@ class VerifyState extends State<Verify> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 0),
                       child: Text(
                         'Didn’t receive an email?',
                         style: TextStyle(
@@ -133,11 +169,13 @@ class VerifyState extends State<Verify> {
                     Padding(
                       padding: const EdgeInsets.only(left: 0),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          AppNavigator.navigateToScreen(context, ForgotPass());
+                        },
                         style: TextButton.styleFrom(
                           alignment: Alignment.centerLeft,
                         ),
-                        child: Text(
+                        child: const Text(
                           'Send again',
                           style: TextStyle(
                             color: Colors.black,

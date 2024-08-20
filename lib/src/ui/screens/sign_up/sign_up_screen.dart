@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shout/src/services/notification_service.dart';
 import 'package:shout/src/ui/widgets/custom_dialog_widget.dart';
+import 'package:shout/src/utils/validators.dart';
 import '../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
 import '../../../config/constants.dart';
 import '../../../navigation/app_navigator.dart';
@@ -20,39 +20,63 @@ class SignUpState extends State<SignUp> {
 
   // final CustomDialogWidget _customDialogWidget = CustomDialogWidget();
   final FirebaseAuthServices _firebaseAuthService = FirebaseAuthServices();
-  final NotificationService _notificationService = NotificationService();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
 
+
+
   Future<void> _handleSignUp() async
   {
     final email = _emailController.text;
     final password = _passwordController.text;
+    final  rePassword= _rePasswordController.text;
+    final  username = _usernameController.text;
+
+    final userValidate = Validator.validateUsername(username);
+    final emailValidate = Validator.validateEmail(email);
+    final passwordValidate= Validator.validatePassword(password);
+    final rePasswordValidate= Validator.validateRePassword(password, rePassword);
+
+    if(userValidate != null || emailValidate != null || passwordValidate != null || rePasswordValidate != null){
+      showDialog(
+        context: context,
+        builder: (context) => CustomDialogWidget(
+          content: userValidate ?? emailValidate ?? passwordValidate ?? rePasswordValidate ?? 'Invalid Input',
+          type: DialogType.error,
+        ),
+      );
+      return;
+    }
+
     try{
        if(await _firebaseAuthService.createAccount(email, password) != null){
          showDialog(
            context: context,
-           builder: (context) => const CustomDialogWidget(
+           builder: (context) => CustomDialogWidget(
              content: 'Sign up successfully!',
              type: DialogType.success,
+             textButtonSuccess: 'Sign in',
+             onSuccessPress: (){
+               AppNavigator.navigateToScreen(context, SignIn());
+             },
            ),
          );
+      }
+    }catch(e){
+      if (e is Exception){
+        showDialog(
+          context: context,
+          builder: (context) => const CustomDialogWidget(
+            content: 'Email already exists',
+            type: DialogType.error,
+          ),
+        );
       }else{
-         showDialog(
-             context: context,
-             builder: (context) => const CustomDialogWidget(
-               content: 'You have failed to sign up!',
-               type: DialogType.error,
-             ),
-         );
-       }
-
-    }catch(e)
-    {
-      print('Fail sign up : $e');
+        print('Fail sign up : $e');
+      }
     }
   }
 

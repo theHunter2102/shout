@@ -11,13 +11,15 @@ class CustomDialogWidget extends StatefulWidget {
   // const CustomDialogWidget({super.key});
   final String content;
   final DialogType type;
-
+  final String? textButtonSuccess;
+  final VoidCallback? onSuccessPress;
 
   const CustomDialogWidget({
     super.key,
     required this.content,
     required this.type,
-
+    this.textButtonSuccess,
+    this.onSuccessPress,
   });
 
   @override
@@ -55,7 +57,7 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          // border: Border.all(width: 1, color: Colors.red),
+          border: Border.all(width: 1, color: color),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -107,10 +109,10 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
                   ),
                     child: const Text('Back'),
                 ),
-                if(widget.type == DialogType.success)
+                if(widget.type == DialogType.success && widget.onSuccessPress != null)
                   ElevatedButton(
                       onPressed: (){
-                        AppNavigator.navigateToScreen(context, SignIn());
+                        widget.onSuccessPress!();
                       },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
@@ -126,9 +128,9 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
                               borderRadius: BorderRadius.circular(12)
                           )
                       ),
-                      child: const Text(
-                          'Sign in',
-                        style: TextStyle(
+                      child: Text(
+                          widget.textButtonSuccess ?? '',
+                        style: const TextStyle(
                           color: Colors.white
                         ),
                       )

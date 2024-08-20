@@ -147,8 +147,6 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
 import '../config/constants.dart';
-// import 'package:it_quizz/src/config/constants.dart';
-
 class NewsApiService {
   final String apiKey = 'pub_4852775f9307ec6aa371cdeda93b54153e4aa';
   final String baseUrl = 'https://newsdata.io/api/1/latest';

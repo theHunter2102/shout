@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shout/src/ui/widgets/custom_dialog_widget.dart';
+import 'package:shout/src/utils/validators.dart';
+import '../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
 import '../../../config/constants.dart';
 import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
@@ -17,14 +20,50 @@ class NewPasswordState extends State<NewPassword> {
 
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
+  final FirebaseAuthServices  _firebaseAuth = FirebaseAuthServices();
+
+  Future<void> updatePassword() async{
+    final newPassword = _passwordController.text;
+    final confirmPassword = _rePasswordController.text;
+    final newPasswordValidate = Validator.validatePassword(newPassword);
+    final confirmPasswordValidate = Validator.validateRePassword(newPassword, confirmPassword);
+
+    if(newPasswordValidate != null || confirmPasswordValidate != null){
+      showDialog(
+        context: context,
+        builder: (context) => CustomDialogWidget(
+          content: newPasswordValidate ?? confirmPasswordValidate ?? 'Invalid Input',
+          type: DialogType.error,
+        ),
+      );
+      return;
+    }
+
+    try{
+      if(await _firebaseAuth.updatePasswordForgot(newPassword)){
+        showDialog(
+            context: context,
+            builder: (context) => CustomDialogWidget(
+                content: 'Update password completed',
+                type: DialogType.success,
+              textButtonSuccess: 'Sign in',
+              onSuccessPress: (){
+                  AppNavigator.navigateToScreen(context, SignIn());
+              },
+            )
+        );
+      }
+    }catch(e)
+    {
+      print('Exception UpdatePassword: $e');
+    }
+
+  }
 
 
   @override
   Widget build(BuildContext context) {
-
   double? screenHeight = AppConstants.screenHeight;
-
-
   return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Inter',
@@ -99,8 +138,7 @@ class NewPasswordState extends State<NewPassword> {
                     child: CustomButton(
                       borderColor: Colors.transparent,
                       onPressed: (){
-                        // go to Sign i
-                        AppNavigator.navigateToScreen(context, SignIn());
+                        updatePassword();
                       },
                       text: 'Confirm',
                     )
@@ -112,9 +150,9 @@ class NewPasswordState extends State<NewPassword> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(padding: const EdgeInsets.only(left: 0),
+                        const Padding(padding: EdgeInsets.only(left: 0),
                           child:  Text(
-                            'Did’t receive an email?',
+                            'Remember current password?',
                             style: TextStyle(
                                 color: AppConstants.textColor,
                                 fontSize: 16,
@@ -124,12 +162,14 @@ class NewPasswordState extends State<NewPassword> {
                         ),
                         Padding(padding: const EdgeInsets.only(left: 0),
                             child:  TextButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                AppNavigator.navigateToScreen(context, SignIn());
+                              },
                               style: TextButton.styleFrom(
                                   alignment: Alignment.centerLeft
                               ),
-                              child: Text(
-                                'Send again',
+                              child: const Text(
+                                'Try again',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16
