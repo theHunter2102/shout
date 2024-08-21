@@ -161,4 +161,23 @@ class FirebaseAuthServices
       return false;
     }
   }
+
+
+  Future<bool> reAuthUser (String currentPassword) async{
+    try{
+      User? user = FirebaseAuth.instance.currentUser;
+      if(user != null){
+        AuthCredential credential = EmailAuthProvider.credential(
+            email: user.email!,
+            password: currentPassword
+        );
+        await user.reauthenticateWithCredential(credential);
+        return true;
+      }
+      return false;
+    }catch(e){
+      print('$e');
+      return false;
+    }
+  }
 }

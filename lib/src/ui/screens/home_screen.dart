@@ -7,7 +7,7 @@ import '../widgets/card_home_screen_horizontal.dart';
 import '../widgets/card_home_screen_vertical.dart';
 import '../widgets/custom_text_field.dart';
 import 'article_detail_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -81,7 +81,7 @@ class HomeScreenState extends State<HomeScreen> {
               height: 40,
               // color: Colors.green,
               child: Text(
-                        'Browse',
+                        AppLocalizations.of(context)!.browse,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class HomeScreenState extends State<HomeScreen> {
               // color: Colors.blue,
                 height: 40,
                 child: Text(
-                  'Discover things of this world',
+                  AppLocalizations.of(context)!.sloganHome,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
@@ -117,7 +117,7 @@ class HomeScreenState extends State<HomeScreen> {
                       children: [
                         Expanded(
                           child: CustomTextField(
-                            hintText: 'Search',
+                            hintText: AppLocalizations.of(context)!.search,
                             controller: _searchController,
                             svgIconPath: 'assets/images/search.svg',
                           ),
@@ -203,7 +203,7 @@ class HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                    'Recommended for you',
+                  AppLocalizations.of(context)!.recommended,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -214,7 +214,7 @@ class HomeScreenState extends State<HomeScreen> {
 
                     },
                     child: Text(
-                        'See All',
+                      AppLocalizations.of(context)!.seeAll,
                       style: TextStyle(
                         color: AppConstants.textColor,
                       ),
@@ -241,122 +241,6 @@ class HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-
-
-
-      // body: Container(
-      //   color: Colors.white,
-      //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       SizedBox(height: screenHeight * 0.08),
-      //       Text(
-      //         'Browse',
-      //         style: TextStyle(
-      //           fontSize: 24,
-      //           fontWeight: FontWeight.bold,
-      //         ),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         "Discover things of this world",
-      //         style: TextStyle(
-      //           fontSize: 16,
-      //           fontWeight: FontWeight.normal,
-      //           color: AppConstants.textColor,
-      //         ),
-      //       ),
-      //       SizedBox(height: 32),
-      //       Container(
-      //         width: screenWidth - 40,
-      //         height: 55,
-      //         decoration: BoxDecoration(
-      //           color: AppConstants.textFieldBg,
-      //           borderRadius: BorderRadius.circular(12),
-      //         ),
-      //         child: Row(
-      //           children: [
-      //             Expanded(
-      //               child: CustomTextField(
-      //                 hintText: 'Search',
-      //                 controller: _searchController,
-      //                 svgIconPath: 'assets/images/search.svg',
-      //               ),
-      //             ),
-      //             IconButton(
-      //               icon: SvgPicture.asset('assets/images/microphone.svg'),
-      //               onPressed: () {},
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //       SizedBox(height: 24),
-      //       Container(
-      //         height: 32,
-      //         child: ListView.builder(
-      //           scrollDirection: Axis.horizontal,
-      //           itemCount: _categories.length,
-      //           itemBuilder: (context, index) {
-      //             final topic = _categories[index];
-      //             return Padding(
-      //               padding: const EdgeInsets.only(right: 10),
-      //               child: buildTopicButton(topic),
-      //             );
-      //           },
-      //         ),
-      //       ),
-      //       SizedBox(height: 24),
-      //       // ListView(
-      //       //   children: [
-      //       //     Padding(
-      //       //       padding: const EdgeInsets.all(8.0),
-      //       //       child: Container(
-      //       //         height: 200,
-      //       //         color: gre,
-      //       //       ),
-      //       //     ),
-      //       //   ],
-      //       // )
-      //       Container(
-      //         height: 256,
-      //         child: ListView.builder(
-      //           scrollDirection: Axis.horizontal,
-      //           itemCount: _firstArticlesPerCategory.length,
-      //           itemBuilder: (context, index) {
-      //             final article = _firstArticlesPerCategory[index];
-      //             final title = article['title'] is String ? article['title'] : 'No title';
-      //             final backgroundImage = article['image_url'] is String ? article['image_url'] : 'assets/images/imgDefaultNews.png';
-      //             final category = _categories[index].toUpperCase();
-      //
-      //             print("----------------------------- :" + category);
-      //             return CardHomeHorizontal(
-      //               backgroundImage: backgroundImage,
-      //               title: title,
-      //               category: category,
-      //             );
-      //           },
-      //         ),
-      //       ),
-      //       SizedBox(height: 30),
-      //       Expanded(
-      //         child: ListView.builder(
-      //           itemCount: _articles.length,
-      //           itemBuilder: (context, index) {
-      //             final article = _articles[index];
-      //             final title = article['title'] ?? 'No title';
-      //             final img = article['image_url'] ?? 'assets/images/imgDefaultNews.png';
-      //
-      //             return CardHomeVertical(
-      //               backgroundImage: img,
-      //               title: title,
-      //             );
-      //           },
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 

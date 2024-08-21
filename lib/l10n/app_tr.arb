@@ -1,0 +1,31 @@
+{
+  "language": "Türkçe",
+  "@language": {
+    "description": "Mevcut Dil"
+  },
+  "browse": "Göz atmak",
+  "sloganHome": "Bu dünyanın şeylerini keşfet",
+  "search": "Ara",
+  "recommended": "Sizin için önerilenler",
+  "seeAll": "Hepsini gör",
+  "categories": "Kategoriler",
+  "categoriesSlogan": "Her kategoride binlerce makale",
+  "bookmarks": "Yer imleri",
+  "bookmarksSlogan": "Kütüphaneye kaydedilen makaleler",
+  "profile": "Profil",
+  "notifications": "Bildirimler",
+  "languageCountry": "Dil",
+  "changePassword": "Şifreyi Değiştir",
+  "privacy": "Gizlilik",
+  "terms": "Şartlar ve Koşullar",
+  "signOut": "Çıkış Yap",
+  "english": "İngilizce",
+  "turkish": "Türkçe",
+  "german": "Almanca",
+  "spanish": "İspanyolca",
+  "currentPass": "Mevcut Şifre",
+  "newPass": "Yeni Şifre",
+  "reNewPass": "Yeni Şifreyi Tekrarla",
+  "comingSoon": "YAKINDA",
+  "termText": "\"Lorem ipsum dolor sit amet, consectetur \\n\"\n  \"Bu bir İngilizce metin, İspanyolca olarak ihtiyacım var\""
+}

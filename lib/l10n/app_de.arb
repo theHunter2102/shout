@@ -1,0 +1,31 @@
+{
+  "language": "Deutsch",
+  "@language": {
+    "description": "Die aktuelle Sprache"
+  },
+  "browse": "Blättern",
+  "sloganHome": "Entdecke die Dinge dieser Welt",
+  "search": "Suchen",
+  "recommended": "Empfohlen für dich",
+  "seeAll": "Alle ansehen",
+  "categories": "Kategorien",
+  "categoriesSlogan": "Tausende Artikel in jeder Kategorie",
+  "bookmarks": "Lesezeichen",
+  "bookmarksSlogan": "Gespeicherte Artikel in der Bibliothek",
+  "profile": "Profil",
+  "notifications": "Benachrichtigungen",
+  "languageCountry": "Sprache",
+  "changePassword": "Passwort ändern",
+  "privacy": "Datenschutz",
+  "terms": "Allgemeine Geschäftsbedingungen",
+  "signOut": "Abmelden",
+  "english": "Englisch",
+  "turkish": "Türkisch",
+  "german": "Deutsch",
+  "spanish": "Spanisch",
+  "currentPass": "Aktuelles Passwort",
+  "newPass": "Neues Passwort",
+  "reNewPass": "Neues Passwort wiederholen",
+  "comingSoon": "DEMÄCHST",
+  "termText": "\"Lorem ipsum dolor sit amet, consectetur \\n\"\n  \"Dies ist ein Text auf Englisch, ich brauche ihn auf Spanisch\""
+}

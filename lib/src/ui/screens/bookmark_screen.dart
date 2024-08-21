@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../config/constants.dart';
 import '../widgets/bookmark_widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class BookmarkScreen extends StatefulWidget {
   const BookmarkScreen({super.key});
 
@@ -25,8 +25,8 @@ class BookmarkScreenState extends State<BookmarkScreen> {
             child: Container(
               alignment: Alignment.centerLeft,
               height: 40,
-              child: const Text(
-                'Bookmarks',
+              child: Text(
+                AppLocalizations.of(context)!.bookmarks,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -34,12 +34,12 @@ class BookmarkScreenState extends State<BookmarkScreen> {
               ),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 8),
             child: SizedBox(
               height: 40,
               child: Text(
-                'Saved articles to the library',
+                AppLocalizations.of(context)!.bookmarksSlogan,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,

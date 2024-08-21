@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shout/src/ui/screens/profile/profile_screen.dart';
+import '../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
 import '../../../config/constants.dart';
-import '../../../my_app.dart';
 import '../../../navigation/app_navigator.dart';
+import '../../../utils/validators.dart';
 import '../../widgets/custom_button.dart';
+import '../../widgets/custom_dialog_widget.dart';
 import '../../widgets/custom_text_field.dart';
 import '../sign_in_screen.dart';
 
@@ -19,6 +22,63 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
   TextEditingController _currentPassword = TextEditingController();
   TextEditingController _newPasswordController = TextEditingController();
   TextEditingController _reNewPasswordController = TextEditingController();
+  final FirebaseAuthServices  _firebaseAuth = FirebaseAuthServices();
+
+  Future<void> changePassword() async{
+    final currentPassword = _currentPassword.text;
+    final newPassword = _newPasswordController.text;
+    final confirmPassword = _reNewPasswordController.text;
+
+    final currentPasswordValidate = Validator.validatePassword(currentPassword);
+    final newPasswordValidate = Validator.validatePassword(newPassword);
+    final confirmPasswordValidate = Validator.validateRePassword(newPassword, confirmPassword);
+
+
+    if(newPasswordValidate != null || confirmPasswordValidate != null){
+      showDialog(
+        context: context,
+        builder: (context) => CustomDialogWidget(
+          content: newPasswordValidate ?? confirmPasswordValidate ?? 'Invalid Input',
+          type: DialogType.error,
+        ),
+      );
+      return;
+    }
+
+    bool checkCurrentPass = await _firebaseAuth.reAuthUser(currentPassword);
+
+    try{
+      if(checkCurrentPass){
+        if(await _firebaseAuth.updatePasswordForgot(newPassword)){
+          showDialog(
+              context: context,
+              builder: (context) => CustomDialogWidget(
+                content: 'Update password completed',
+                type: DialogType.success,
+                textButtonSuccess: 'Sign in',
+                onSuccessPress: (){
+                  AppNavigator.navigateToScreen(context, SignIn());
+                },
+              )
+          );
+        }
+      }else{
+        showDialog(
+            context: context,
+            builder: (context)=> const CustomDialogWidget(
+                content: 'The current password is incorrect',
+                type: DialogType.error
+            )
+        );
+      }
+    }catch(e)
+    {
+      print('Exception UpdatePassword: $e');
+    }
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double? screenHeight = AppConstants.screenHeight;
@@ -45,7 +105,7 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       height: 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppNavigator.navigateToScreen(context, MyApp());
+                          AppNavigator.navigateToScreen(context, ProfileScreen());
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.white,
@@ -118,7 +178,7 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     borderColor: Colors.transparent,
                     onPressed: (){
                       // go to Sign i
-                      AppNavigator.navigateToScreen(context, SignIn());
+                     changePassword();
                     },
                     text: 'Change Password',
                   )

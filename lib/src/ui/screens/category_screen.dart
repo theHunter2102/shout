@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../config/constants.dart';
 import '../widgets/favorite_topic_widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class CategoryScreen extends StatefulWidget
 {
   @override
@@ -38,7 +38,7 @@ class CategoryScreenState extends State<CategoryScreen> {
             alignment: Alignment.centerLeft,
             height: 40,
             child: Text(
-              'Categories',
+              AppLocalizations.of(context)!.categories,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class CategoryScreenState extends State<CategoryScreen> {
           child: Container(
             height: 40,
             child: Text(
-              'Thousands of articles in each category',
+              AppLocalizations.of(context)!.categoriesSlogan,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,

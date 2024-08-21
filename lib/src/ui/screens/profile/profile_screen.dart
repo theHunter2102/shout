@@ -7,7 +7,7 @@ import '../../widgets/custom_button_profile.dart';
 import '../sign_in_screen.dart';
 import 'change_password_screen.dart';
 import 'language_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class ProfileScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -34,7 +34,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   children: [
                     Text(
-                      'Profile',
+                      AppLocalizations.of(context)!.profile,
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold
@@ -88,7 +88,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         top: 16,
                         left: 20,
                         child: Text(
-                            'Notifications',
+                          AppLocalizations.of(context)!.notifications,
                           style: TextStyle(
                             color: AppConstants.textColor,
                             fontWeight: FontWeight.w500
@@ -125,7 +125,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 left: 20,
                 right: 20,
                 child: CustomButtonProfile(
-                  text: 'Language',
+                  text: AppLocalizations.of(context)!.languageCountry,
                   iconPath: 'assets/images/angleRight.svg',
                   textStyle: TextStyle(
                       color: AppConstants.textColor
@@ -143,7 +143,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 left: 20,
                 right: 20,
                 child: CustomButtonProfile(
-                  text: 'Change Password',
+                  text: AppLocalizations.of(context)!.changePassword,
                   iconPath: 'assets/images/angleRight.svg',
                   textStyle: TextStyle(
                       color: AppConstants.textColor
@@ -161,7 +161,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 left: 20,
                 right: 20,
                 child: CustomButtonProfile(
-                  text: 'Privacy',
+                  text: AppLocalizations.of(context)!.privacy,
                   iconPath: 'assets/images/angleRight.svg',
                   textStyle: TextStyle(
                       color: AppConstants.textColor
@@ -179,7 +179,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 left: 20,
                 right: 20,
                 child: CustomButtonProfile(
-                  text: 'Terms & Conditions',
+                  text: AppLocalizations.of(context)!.terms,
                   iconPath: 'assets/images/angleRight.svg',
                   textStyle: TextStyle(
                       color: AppConstants.textColor
@@ -198,7 +198,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 left: 20,
                 right: 20,
                 child: CustomButtonProfile(
-                  text: 'Sign Out',
+                  text: AppLocalizations.of(context)!.signOut,
                   iconPath: 'assets/images/signOut.svg',
                   textStyle: TextStyle(
                       color: AppConstants.textColor

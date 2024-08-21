@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shout/src/ui/screens/profile/profile_screen.dart';
 
 import '../../../config/constants.dart';
 import '../../../my_app.dart';
@@ -48,8 +49,7 @@ class TermsScreenState extends State<TermsScreen> {
                       height: 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppNavigator.navigateToScreen(context, MyApp());
-                        },
+                          AppNavigator.navigateToScreen(context, ProfileScreen());                        },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.white,
                             elevation: 0,

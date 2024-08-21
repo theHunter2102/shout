@@ -1,0 +1,32 @@
+{
+  "language": "Español",
+  "@language": {
+    "description": "El idioma actual"
+  },
+  "browse": "Hojear",
+  "sloganHome": "Descubre cosas de este mundo",
+  "search": "Buscar",
+  "recommended": "Recomendado para ti",
+  "seeAll": "Ver todo",
+  "categories": "Categorías",
+  "categoriesSlogan": "Miles de artículos en cada categoría",
+  "bookmarks": "Marcadores",
+  "bookmarksSlogan": "Artículos guardados en la biblioteca",
+  "profile": "Perfil",
+  "notifications": "Notificaciones",
+  "languageCountry": "Idioma",
+  "changePassword": "Cambiar Contraseña",
+  "privacy": "Privacidad",
+  "terms": "Términos y Condiciones",
+  "signOut": "Cerrar Sesión",
+  "english": "Inglés",
+  "turkish": "Turco",
+  "german": "Alemán",
+  "spanish": "Español",
+  "currentPass": "Contraseña Actual",
+  "newPass": "Nueva Contraseña",
+  "reNewPass": "Repetir Nueva Contraseña",
+  "comingSoon": "PRÓXIMAMENTE",
+  "termText": "\"Lorem ipsum dolor sit amet, consectetur \\n\"\n  \"Este es un texto en inglés, necesito en español\""
+}
+

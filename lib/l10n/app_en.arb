@@ -1,0 +1,31 @@
+{
+  "language" : "English",
+  "@language": {
+    "description" : "The current Language"
+  },
+  "browse" : "Browse",
+  "sloganHome" : "Discover things of this world",
+  "search" : "Search",
+  "recommended" : "Recommended for you",
+  "seeAll" : "See All",
+  "categories" : "Categories",
+  "categoriesSlogan" : "Thousands of articles in each category",
+  "bookmarks" : "Bookmarks",
+  "bookmarksSlogan" : "Saved articles to the library",
+  "profile" : "Profile",
+  "notifications" : "Notifications",
+  "languageCountry" : "Language",
+  "changePassword" : "Change Password",
+  "privacy" : "Privacy",
+  "terms" : "Terms & Conditions",
+  "signOut" : "Sign Out",
+  "english" : "English",
+  "turkish" : "Turkish",
+  "german" : "German",
+  "spanish" : "Spanish",
+  "currentPass" : "Current Password",
+  "newPass" : "New Password",
+  "reNewPass" : "Repeat New Password",
+  "comingSoon" : "COMING SOON",
+  "termText" : "\"Lorem ipsum dolor sit amet, consectetur \\n\"\n                        \"adipiscing elit, sed do eiusmod tempor \\n\"\n                        \"incididunt ut labore et dolore magna aliqua.\\n\"\n                        \" Ut enim ad minim veniam, quis nostrud \\n\"\n                        \"exercitation ullamco laboris nisi ut aliquip ex\\n \"\n                        \"ea commodo consequat. Duis aute irure \\n\"\n                        \"dolor in reprehenderit in voluptate velit esse \\n\"\n                        \"cillum dolore eu fugiat nulla pariatur.\\n\"\n                        \" Excepteur sint occaecat cupidatat non\\n\"\n                        \"proident, sunt in culpa qui officia deserunt \\n\"\n                        \"mollit anim id est laborum. \\n\"\n                        \"\\n\"\n                        \"Sed ut perspiciatis unde omnis iste natus\\n\"\n                        \"error sit voluptatem accusantium\\n\"\n                        \" doloremque laudantium, totam rem aperiam,\\n\"\n                        \" eaque ipsa quae ab illo inventore veritatis et\\n\"\n                        \" quasi architecto beatae vitae dicta sunt\\n\"\n                        \" explicabo.\\n\"\n                        \"\\n\"\n                        \"Nemo enim ipsam voluptatem quia voluptas \\n\"\n                        \"sit aspernatur aut odit aut fugit, sed quia \\n\"\n                        \"consequuntur magni dolores eos qui ratione \\n\"\n                        \"voluptatem sequi nesciunt.\\n\"\n                        \"\\n\"\n                        \"Neque porro quisquam est, qui dolorem \\n\"\n                        \"ipsum quia dolor sit amet, consectetur, \\n\"\n                        \"adipisci velit, sed quia non numquam eius \\n\"\n                        \"modi tempora incidunt ut labore et dolore \\n\"\n                        \"magnam aliquam quaerat voluptatem. \\n\""
+}

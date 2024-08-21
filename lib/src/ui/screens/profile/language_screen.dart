@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shout/src/ui/screens/profile/profile_screen.dart';
+import 'package:shout/src/ui/widgets/custom_language_widget.dart';
 
 import '../../../config/constants.dart';
-import '../../widgets/custom_button_profile.dart';
+import '../../../navigation/app_navigator.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 
 class LanguageScreen extends StatefulWidget {
   @override
@@ -78,7 +82,7 @@ class LanguageScreenState extends State<LanguageScreen> {
                       width: screenWidth! * 0.8 - 10,
                       alignment: Alignment.center,
                       child: Text(
-                        "Language",
+                        AppLocalizations.of(context)!.language,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold
@@ -93,8 +97,8 @@ class LanguageScreenState extends State<LanguageScreen> {
                 top: screenHeight * 0.15,
                 left: 20,
                 right: 20,
-                child: CustomButtonProfile(
-                  text: 'English',
+                child: CustomButtonLanguage(
+                  text: AppLocalizations.of(context)!.english,
                   iconPath: 'assets/images/correctIcon.svg',
                   onPressed: () {
                     onClickLanguage('English');
@@ -108,14 +112,17 @@ class LanguageScreenState extends State<LanguageScreen> {
                   iconColor:_selectedLanguage == 'English'
                       ? Colors.white
                       : AppConstants.textFieldBg,
+                  textColor: _selectedLanguage == 'English'
+                      ? Colors.white
+                      : AppConstants.textColor,
                 ),
               ),
               Positioned(
                 top: screenHeight * 0.24,
                 left: 20,
                 right: 20,
-                child: CustomButtonProfile(
-                  text: 'Turkish',
+                child: CustomButtonLanguage(
+                  text: AppLocalizations.of(context)!.turkish,
                   iconPath: 'assets/images/correctIcon.svg',
                   onPressed: () {
                     onClickLanguage('Turkish');
@@ -129,14 +136,17 @@ class LanguageScreenState extends State<LanguageScreen> {
                   iconColor:_selectedLanguage == 'Turkish'
                       ? Colors.white
                       : AppConstants.textFieldBg,
+                  textColor: _selectedLanguage == 'Turkish'
+                      ? Colors.white
+                      : AppConstants.textColor,
                 ),
               ),
               Positioned(
                 top: screenHeight * 0.33,
                 left: 20,
                 right: 20,
-                child: CustomButtonProfile(
-                  text: 'German',
+                child: CustomButtonLanguage(
+                  text: AppLocalizations.of(context)!.german,
                   iconPath: 'assets/images/correctIcon.svg',
                   onPressed: () {
                     onClickLanguage('German');
@@ -150,14 +160,17 @@ class LanguageScreenState extends State<LanguageScreen> {
                   iconColor:_selectedLanguage == 'German'
                       ? Colors.white
                       : AppConstants.textFieldBg,
+                  textColor: _selectedLanguage == 'German'
+                      ? Colors.white
+                      : AppConstants.textColor,
                 ),
               ),
               Positioned(
                 top: screenHeight * 0.42,
                 left: 20,
                 right: 20,
-                child: CustomButtonProfile(
-                  text: 'Spanish',
+                child: CustomButtonLanguage(
+                  text: AppLocalizations.of(context)!.spanish,
                   iconPath: 'assets/images/correctIcon.svg',
                   onPressed: () {
                     onClickLanguage('Spanish');
@@ -171,6 +184,9 @@ class LanguageScreenState extends State<LanguageScreen> {
                   iconColor:_selectedLanguage == 'Spanish'
                       ? Colors.white
                       : AppConstants.textFieldBg,
+                  textColor: _selectedLanguage == 'Spanish'
+                      ? Colors.white
+                      : AppConstants.textColor,
                 ),
               ),
             ],
