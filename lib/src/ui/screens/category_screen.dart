@@ -14,7 +14,6 @@ class CategoryScreen extends StatefulWidget
 class CategoryScreenState extends State<CategoryScreen> {
 
   // List<String> _categories = AppConstants.categories;
-  List<String> _categories = ['🏈   Sports', '⚖️   Politics', '🌞   Life', '🎮   Gaming', '🐻   Animals', '🌴   Nature', '🍔   Food', '🎨   Art', '📜   History', '👗   Fashion','😷   Covid-19','⚔️   Middle East'];
   List<bool> selectedCategory = [false,false,false,false,false,false,false,false,false,false,false,false,];
 
   void toggleSelection (int index)
@@ -26,8 +25,11 @@ class CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+
   double? screenHeight = AppConstants.screenHeight;
-  return Scaffold(
+  List<String> _categories = ['🏈   ${AppLocalizations.of(context)!.sport}', '⚖️   Politics', '🌞   Life', '🎮   Gaming', '🐻   Animals', '🌴   Nature', '🍔   Food', '🎨   Art', '📜   History', '👗   Fashion','😷   Covid-19','⚔️   Middle East'];
+
+    return Scaffold(
     backgroundColor: Colors.white,
     body: ListView(
       padding: EdgeInsets.all(20),

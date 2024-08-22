@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shout/l10n/l10n.dart';
 import 'package:shout/src/ui/screens/bookmark_screen.dart';
 import 'package:shout/src/ui/screens/category_screen.dart';
 import 'package:shout/src/ui/screens/home_screen.dart';
 import 'package:shout/src/ui/screens/profile/profile_screen.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 import 'config/constants.dart';
 
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final int index;
+  const MyApp({super.key, this.index = 0});
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   final List<Widget> _screens = [
     HomeScreen(),
@@ -29,16 +28,14 @@ class _MyAppState extends State<MyApp> {
   ];
 
   @override
+  void  initState(){
+    super.initState();
+    _currentIndex = widget.index;
+  }
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales:  L10n.all,
-      locale: const Locale('es'),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        AppLocalizations.delegate
-      ],
+
       home: Scaffold(
         body: IndexedStack(
           index: _currentIndex,

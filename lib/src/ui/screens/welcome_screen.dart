@@ -3,6 +3,7 @@ import 'package:shout/src/ui/screens/sign_in_screen.dart';
 import '../../config/constants.dart';
 import '../../navigation/app_navigator.dart';
 import '../widgets/custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -42,10 +43,10 @@ class WelcomeScreenState extends State<WelcomeScreen> {
 
                   Positioned(
                     top: screenHeight * 0.70,
-                    left: 0,
-                    right: 0,
-                    child: Text('All quiz in one place, be \n '
-                        'the first to know the latest news',
+                    left: 20,
+                    right: 20,
+                    child: Text(
+                       AppLocalizations.of(context)!.onboardContent,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                     left: 20,
                     child: CustomButton(
                       borderColor: Colors.transparent,
-                      text: 'Get Started',
+                      text: AppLocalizations.of(context)!.getStart,
                       onPressed: () {
                         AppNavigator.navigateToScreen(context, SignIn());
                       },

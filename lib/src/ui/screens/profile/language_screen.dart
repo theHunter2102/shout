@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shout/src/ui/screens/home_screen.dart';
 import 'package:shout/src/ui/screens/profile/profile_screen.dart';
 import 'package:shout/src/ui/widgets/custom_language_widget.dart';
 
 import '../../../config/constants.dart';
+import '../../../my_app.dart';
 import '../../../navigation/app_navigator.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -62,8 +64,7 @@ class LanguageScreenState extends State<LanguageScreen> {
                       height: 30,
                       child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pop(context);
-                              // AppNavigator.navigateToScreen(context, MyApp());
+                              AppNavigator.navigateToScreen(context, MyApp(index: 3,));
                             },
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,

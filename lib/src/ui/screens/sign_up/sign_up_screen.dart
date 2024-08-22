@@ -7,6 +7,8 @@ import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../sign_in_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 class SignUp extends StatefulWidget
 {
   const SignUp({super.key});
@@ -58,7 +60,7 @@ class SignUpState extends State<SignUp> {
            builder: (context) => CustomDialogWidget(
              content: 'Sign up successfully!',
              type: DialogType.success,
-             textButtonSuccess: 'Sign in',
+             textButtonSuccess: AppLocalizations.of(context)!.signIn,
              onSuccessPress: (){
                AppNavigator.navigateToScreen(context, SignIn());
              },
@@ -106,11 +108,11 @@ class SignUpState extends State<SignUp> {
                 top: screenHeight! * 0.08,
                 left: 20,
                 right: 0,
-                child: const Row(
+                child: Row(
                   children: [
                     Text(
-                      'Welcome to Shout 👋',
-                      style: TextStyle(
+                      '${AppLocalizations.of(context)!.welcomeTo} Shout 👋',
+                      style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold
                       ),
@@ -123,8 +125,8 @@ class SignUpState extends State<SignUp> {
                 top: screenHeight * 0.13,
                 left: 20,
                 right: 0,
-                child: const Text("Hello, I guess you are new around here. You \n"
-                    "can start using the application after sign up.",
+                child: Text(
+                  AppLocalizations.of(context)!.signUpSlogan,
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
@@ -151,7 +153,7 @@ class SignUpState extends State<SignUp> {
                   controller: _emailController,
                   svgIconPath: 'assets/images/email.svg',
 
-                  hintText: 'Email address',
+                  hintText: AppLocalizations.of(context)!.emailAddress,
                 ),
               ),
               Positioned(
@@ -162,7 +164,7 @@ class SignUpState extends State<SignUp> {
                   obscureText: true,
                   controller: _passwordController,
                   svgIconPath: 'assets/images/padlock.svg',
-                  hintText: 'Password',
+                  hintText:  AppLocalizations.of(context)!.password,
                 ),
               ),
               Positioned(
@@ -174,7 +176,7 @@ class SignUpState extends State<SignUp> {
                   obscureText: true,
                   controller: _rePasswordController,
                   svgIconPath: 'assets/images/padlock.svg',
-                  hintText: 'Repeat Password',
+                  hintText:  AppLocalizations.of(context)!.rePass,
                 ),
               ),
               Positioned(
@@ -186,7 +188,7 @@ class SignUpState extends State<SignUp> {
                     onPressed: (){
                       _handleSignUp();
                     },
-                    text: 'Sign Up',
+                    text:  AppLocalizations.of(context)!.signUp,
                   )
               ),
               Positioned(
@@ -196,10 +198,10 @@ class SignUpState extends State<SignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Padding(padding: EdgeInsets.only(left: 0),
+                      Padding(padding: EdgeInsets.only(left: 0),
                         child:  Text(
-                          'Already have an account?',
-                          style: TextStyle(
+                          '${AppLocalizations.of(context)!.rePass}?',
+                          style: const TextStyle(
                               color: Color(0xFF555A77),
                               fontSize: 16,
                               fontWeight: FontWeight.w500
@@ -214,8 +216,8 @@ class SignUpState extends State<SignUp> {
                             style: TextButton.styleFrom(
                                 alignment: Alignment.centerLeft
                             ),
-                            child: const Text(
-                              'Sign In',
+                            child: Text(
+                              AppLocalizations.of(context)!.signIn ,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16

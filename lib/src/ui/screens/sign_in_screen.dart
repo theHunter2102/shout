@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shout/generated/l10n.dart';
 import 'package:shout/src/ui/screens/sign_up/sign_up_screen.dart';
 import 'package:shout/src/ui/widgets/custom_dialog_widget.dart';
 import 'package:shout/src/utils/validators.dart';
@@ -11,6 +12,8 @@ import '../../services/news_api_service.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 import 'forgot_password/forgot_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 class SignIn extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -122,10 +125,10 @@ class SignInState extends State<SignIn> {
                 top: screenHeight! * 0.08,
                 left: 20,
                 right: 0,
-                child: const Row(
+                child: Row(
                   children: [
                     Text(
-                      'Welcome Back 👋',
+                      '${AppLocalizations.of(context)!.browse}👋',
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold
@@ -139,8 +142,8 @@ class SignInState extends State<SignIn> {
                 top: screenHeight * 0.13,
                 left: 20,
                 right: 0,
-                child: const Text('I am happy to see you again. You can \n'
-                    'continue where you left off by logging in',
+                child: Text(
+                  AppLocalizations.of(context)!.signInSlogan,
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -156,7 +159,7 @@ class SignInState extends State<SignIn> {
                 child: CustomTextField(
                   controller: _emailController,
                   svgIconPath: 'assets/images/email.svg',
-                  hintText: 'Email address',
+                  hintText:  AppLocalizations.of(context)!.emailAddress,
                 ),
               ),
               Positioned(
@@ -169,7 +172,7 @@ class SignInState extends State<SignIn> {
                     obscureText: true,
                     controller: _passwordController,
                     svgIconPath: 'assets/images/padlock.svg',
-                    hintText: 'Password',
+                    hintText: AppLocalizations.of(context)!.password,
                   ),
                 ),
               ),
@@ -184,8 +187,8 @@ class SignInState extends State<SignIn> {
                   style: TextButton.styleFrom(
                     alignment: Alignment.centerRight
                   ),
-                    child: const Text(
-                        'Forgot password?',
+                    child: Text(
+                        '${AppLocalizations.of(context)!.forgotPassword} ?',
                       style: TextStyle(
                         color: AppConstants.textColor,
                         fontSize: 16
@@ -202,15 +205,16 @@ class SignInState extends State<SignIn> {
                     onPressed: (){
                       signIn();
                     },
-                    text: 'Sign In',
+                    text: AppLocalizations.of(context)!.signIn,
                   )
               ),
               Positioned(
                 top: screenHeight * 0.58,
                 left: 20,
                 right: 20,
-                child: const Text('or',
-                  style: TextStyle(
+                child: Text(
+                  AppLocalizations.of(context)!.or,
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: AppConstants.textColor
@@ -230,7 +234,7 @@ class SignInState extends State<SignIn> {
                     iconPath: 'assets/images/google1.svg',
                     color: Colors.white,
                     // icon: Icons.,
-                    text: 'Sign In with Google',
+                    text: AppLocalizations.of(context)!.signInGG,
                       textStyle: const TextStyle(
                         color: AppConstants.textColor,
                         fontSize: 16
@@ -248,7 +252,7 @@ class SignInState extends State<SignIn> {
                     },
                     iconPath: 'assets/images/facebook1.svg',
                     color: Colors.white,
-                    text: 'Sign In with Facebook',
+                    text: AppLocalizations.of(context)!.signInFB,
                       textStyle: const TextStyle(
                           color: AppConstants.textColor,
                         fontSize: 16
@@ -262,9 +266,9 @@ class SignInState extends State<SignIn> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Padding(padding: EdgeInsets.only(left: 0),
+                      Padding(padding: EdgeInsets.only(left: 0),
                         child:  Text(
-                          'Don''t have account?',
+                          AppLocalizations.of(context)!.notHaveAccount,
                           style: TextStyle(
                             color: Color(0xFF555A77),
                             fontSize: 16,
@@ -280,8 +284,8 @@ class SignInState extends State<SignIn> {
                           style: TextButton.styleFrom(
                               alignment: Alignment.centerLeft
                           ),
-                          child: const Text(
-                            'Sign Up',
+                          child: Text(
+                            AppLocalizations.of(context)!.signUp,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 16

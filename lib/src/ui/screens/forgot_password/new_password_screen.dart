@@ -7,7 +7,7 @@ import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../sign_in_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class NewPassword extends StatefulWidget {
   @override
@@ -83,7 +83,7 @@ class NewPasswordState extends State<NewPassword> {
                   child: Row(
                     children: [
                       Text(
-                        'Create New Password 🔒',
+                        '${AppLocalizations.of(context)!.createNewPass} 🔒',
                         style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold
@@ -97,8 +97,8 @@ class NewPasswordState extends State<NewPassword> {
                   top: screenHeight * 0.13,
                   left: 20,
                   right: 0,
-                  child: Text("You can create a new password, please\n"
-                      "don't forget it too.",
+                  child: Text(
+                    AppLocalizations.of(context)!.createNewPassSlogan,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -115,7 +115,7 @@ class NewPasswordState extends State<NewPassword> {
                     obscureText: true,
                     controller: _passwordController,
                     svgIconPath: 'assets/images/padlock.svg',
-                    hintText: 'New Password',
+                    hintText: AppLocalizations.of(context)!.newPass,
                   ),
                 ),
                 Positioned(
@@ -127,7 +127,7 @@ class NewPasswordState extends State<NewPassword> {
                       obscureText: true,
                       controller: _rePasswordController,
                       svgIconPath: 'assets/images/padlock.svg',
-                      hintText: 'Repeat New Password',
+                      hintText: AppLocalizations.of(context)!.reNewPass,
                     ),
                 ),
 
@@ -140,7 +140,7 @@ class NewPasswordState extends State<NewPassword> {
                       onPressed: (){
                         updatePassword();
                       },
-                      text: 'Confirm',
+                      text: AppLocalizations.of(context)!.confirm,
                     )
                 ),
                 Positioned(
@@ -150,9 +150,9 @@ class NewPasswordState extends State<NewPassword> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Padding(padding: EdgeInsets.only(left: 0),
+                        Padding(padding: EdgeInsets.only(left: 0),
                           child:  Text(
-                            'Remember current password?',
+                            '${AppLocalizations.of(context)!.rememberCurrentPass}',
                             style: TextStyle(
                                 color: AppConstants.textColor,
                                 fontSize: 16,
@@ -168,8 +168,8 @@ class NewPasswordState extends State<NewPassword> {
                               style: TextButton.styleFrom(
                                   alignment: Alignment.centerLeft
                               ),
-                              child: const Text(
-                                'Try again',
+                              child: Text(
+                                AppLocalizations.of(context)!.tryAgain,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16

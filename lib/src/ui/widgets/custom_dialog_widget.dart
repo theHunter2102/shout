@@ -107,7 +107,7 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
                       borderRadius: BorderRadius.circular(12)
                     )
                   ),
-                    child: const Text('Back'),
+                    child: Text('Back'),
                 ),
                 if(widget.type == DialogType.success && widget.onSuccessPress != null)
                   ElevatedButton(

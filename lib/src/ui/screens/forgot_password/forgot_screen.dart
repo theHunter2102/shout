@@ -11,8 +11,11 @@ import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../sign_in_screen.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 class ForgotPass extends StatefulWidget {
+  const ForgotPass({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return ForgotPassState();
@@ -80,7 +83,7 @@ class ForgotPassState extends State<ForgotPass>
               builder: (context) =>  CustomDialogWidget(
                 content: 'Check your email',
                 type: DialogType.success,
-                textButtonSuccess: 'Next',
+                textButtonSuccess: AppLocalizations.of(context)!.next,
                 onSuccessPress: (){
                   AppNavigator.navigateToScreen(context, const VerifyCode());
                 },
@@ -230,7 +233,7 @@ class ForgotPassState extends State<ForgotPass>
                       right: 0,
                       child:
                           Text(
-                            'Forgot Password 🤔',
+                            '${AppLocalizations.of(context)!.forgotPassword} 🤔',
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold
@@ -240,9 +243,9 @@ class ForgotPassState extends State<ForgotPass>
                     Positioned(
                       top: screenHeight * 0.13,
                       left: 20,
-                      right: 0,
-                      child: Text('We need your email adress so we can send \n'
-                          'you the password reset code.',
+                      right: 20,
+                      child: Text(
+                        AppLocalizations.of(context)!.forgotPassSlogan,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -259,7 +262,7 @@ class ForgotPassState extends State<ForgotPass>
                         controller: _emailController,
                         svgIconPath: 'assets/images/email.svg',
 
-                        hintText: 'Email address',
+                        hintText: AppLocalizations.of(context)!.emailAddress,
                       ),
                     ),
 
@@ -272,7 +275,7 @@ class ForgotPassState extends State<ForgotPass>
                           onPressed: (){
                             navigateToVerify(context);
                           },
-                          text: 'Next',
+                          text: AppLocalizations.of(context)!.next,
                         )
                     ),
                     Positioned(
@@ -282,9 +285,9 @@ class ForgotPassState extends State<ForgotPass>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Padding(padding: EdgeInsets.only(left: 0),
+                            Padding(padding: EdgeInsets.only(left: 0),
                               child:  Text(
-                                'Remember the password?',
+                                '${AppLocalizations.of(context)!.rememberPass}?',
                                 style: TextStyle(
                                     color: AppConstants.textColor,
                                     fontSize: 16,
@@ -300,8 +303,8 @@ class ForgotPassState extends State<ForgotPass>
                                   style: TextButton.styleFrom(
                                       alignment: Alignment.centerLeft
                                   ),
-                                  child: const Text(
-                                    'Try again',
+                                  child: Text(
+                                  AppLocalizations.of(context)!.tryAgain,
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 16

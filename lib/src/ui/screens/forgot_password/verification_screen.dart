@@ -8,6 +8,7 @@ import '../../../navigation/app_navigator.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dialog_widget.dart';
 import 'new_password_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class VerifyCode extends StatefulWidget {
   const VerifyCode({super.key});
@@ -102,7 +103,7 @@ class VerifyCodeState extends State<VerifyCode> {
                 left: 20,
                 right: 0,
                 child: Text(
-                  'Verification Code ✅',
+                  '${AppLocalizations.of(context)!.verifyCode} ✅',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -112,9 +113,9 @@ class VerifyCodeState extends State<VerifyCode> {
               Positioned(
                 top: screenHeight * 0.13,
                 left: 20,
-                right: 0,
+                right: 20,
                 child: Text(
-                  'You need to enter 4-digit code we send to\nyour email address.',
+                  AppLocalizations.of(context)!.verifySlogan,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -145,7 +146,7 @@ class VerifyCodeState extends State<VerifyCode> {
                   onPressed: () {
                    verifyOTP(_otpCode);
                   },
-                  text: 'Confirm',
+                  text: AppLocalizations.of(context)!.confirm,
                 ),
               ),
               Positioned(
@@ -155,10 +156,10 @@ class VerifyCodeState extends State<VerifyCode> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(left: 0),
                       child: Text(
-                        'Didn’t receive an email?',
+                        AppLocalizations.of(context)!.notSendMail,
                         style: TextStyle(
                           color: AppConstants.textColor,
                           fontSize: 16,
@@ -175,8 +176,8 @@ class VerifyCodeState extends State<VerifyCode> {
                         style: TextButton.styleFrom(
                           alignment: Alignment.centerLeft,
                         ),
-                        child: const Text(
-                          'Send again',
+                        child: Text(
+                          AppLocalizations.of(context)!.sendAgain,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,

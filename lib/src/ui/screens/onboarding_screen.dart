@@ -4,6 +4,8 @@ import 'package:shout/src/ui/screens/welcome_screen.dart';
 import '../../config/constants.dart';
 import '../../navigation/app_navigator.dart';
 import '../widgets/custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 class Onboarding extends StatefulWidget
 {
   @override
@@ -54,8 +56,8 @@ class OnboardingState extends State<Onboarding>
                       top: screenHeight * 0.63,
                       left: 0,
                       right: 0,
-                      child: const Text(
-                        'First to know',
+                      child: Text(
+                        AppLocalizations.of(context)!.onboardTitle,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold
@@ -67,8 +69,8 @@ class OnboardingState extends State<Onboarding>
                       top: screenHeight * 0.70,
                       left: 20,
                       right: 20,
-                      child: const Text('All quiz in one place, be \n '
-                          'the first to know the latest news',
+                      child: Text(
+                        AppLocalizations.of(context)!.onboardContent,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -83,7 +85,7 @@ class OnboardingState extends State<Onboarding>
                       right: 20,
                       child: CustomButton(
                         borderColor: Colors.transparent,
-                        text: 'Next',
+                        text: AppLocalizations.of(context)!.next,
                         onPressed: () {
                           // navigateToWelcome(context);
                           AppNavigator.navigateToScreen(context, WelcomeScreen());
