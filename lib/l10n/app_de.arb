@@ -88,5 +88,8 @@
   "passwordEmpty": "Passwort darf nicht leer sein",
   "passwordShort": "Das Passwort muss mindestens 6 Zeichen lang sein",
   "confirmPassEmpty": "Bitte bestätigen Sie Ihr Passwort",
-  "passNotMatch": "Passwörter stimmen nicht überein"
+  "passNotMatch": "Passwörter stimmen nicht überein",
+  "invalidEmailOrPass": "Ungültige E-Mail oder Passwort",
+  "signInGGFail": "Anmeldung mit Google fehlgeschlagen",
+  "signInFBFail": "Anmeldung mit Facebook fehlgeschlagen"
 }

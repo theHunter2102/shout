@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../config/constants.dart';
-import '../../my_app.dart';
-import '../../navigation/app_navigator.dart';
+import 'package:shout/src/ui/screens/details/main_screen.dart';
+import '../../../config/constants.dart';
+import '../../../my_app.dart';
+import '../../../navigation/app_navigator.dart';
 
 class ArticleDetailScreen extends StatelessWidget {
   final Map<String, dynamic> article;
@@ -37,7 +38,7 @@ class ArticleDetailScreen extends StatelessWidget {
                       height: 25,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppNavigator.navigateToScreen(context, const MyApp());
+                          AppNavigator.navigateToScreen(context, const MainScreen());
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.white,
@@ -59,7 +60,7 @@ class ArticleDetailScreen extends StatelessWidget {
                           height: 30,
                           child: ElevatedButton(
                             onPressed: () {
-                              AppNavigator.navigateToScreen(context, const MyApp());
+                              AppNavigator.navigateToScreen(context, const MainScreen());
                             },
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
@@ -80,7 +81,7 @@ class ArticleDetailScreen extends StatelessWidget {
                           height: 30,
                           child: ElevatedButton(
                             onPressed: () {
-                              AppNavigator.navigateToScreen(context, const MyApp());
+                              AppNavigator.navigateToScreen(context, const MainScreen());
                             },
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,

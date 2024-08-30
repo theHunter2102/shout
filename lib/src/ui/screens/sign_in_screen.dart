@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shout/generated/l10n.dart';
+import 'package:shout/src/ui/screens/details/main_screen.dart';
 import 'package:shout/src/ui/screens/sign_up/sign_up_screen.dart';
 import 'package:shout/src/ui/widgets/custom_dialog_widget.dart';
 import 'package:shout/src/utils/validators.dart';
@@ -49,7 +50,7 @@ class SignInState extends State<SignIn> {
 
     try{
       if(await _firebaseAuthService.signInWithEmailAndPassword(email, password) != null) {
-        AppNavigator.navigateToScreen(context, const MyApp());
+        AppNavigator.navigateToScreen(context, const MainScreen());
       }
     }catch(e){
       print('Error caught: $e');
@@ -67,7 +68,7 @@ class SignInState extends State<SignIn> {
 
    final user =  await _firebaseAuthService.signInWithGoogle();
    if(user != null){
-     AppNavigator.navigateToScreen(context, const MyApp());
+     AppNavigator.navigateToScreen(context, const MainScreen());
    }else{
      showDialog(
          context: context,
@@ -86,7 +87,7 @@ class SignInState extends State<SignIn> {
       final user =  await _firebaseAuthService.signInWithFacebook();
       if(user != null){
 
-        AppNavigator.navigateToScreen(context, const MyApp());
+        AppNavigator.navigateToScreen(context, const MainScreen());
       }else{
         showDialog(
             context: context,
@@ -128,7 +129,7 @@ class SignInState extends State<SignIn> {
                 child: Row(
                   children: [
                     Text(
-                      '${AppLocalizations.of(context)!.browse}👋',
+                      '${AppLocalizations.of(context)!.welcome}👋',
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../config/constants.dart';
+import '../../../config/constants.dart';
 import 'onboarding_screen.dart';
 
 class Splash extends StatefulWidget

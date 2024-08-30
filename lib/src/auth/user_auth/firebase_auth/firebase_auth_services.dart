@@ -180,4 +180,13 @@ class FirebaseAuthServices
       return false;
     }
   }
+  Future<void> signOut() async {
+    try {
+      await _googleSignIn.signOut();
+      await FirebaseAuth.instance.signOut();
+      print('Successfully signed out');
+    } catch (e) {
+      print('Error signing out: $e');
+    }
+  }
 }

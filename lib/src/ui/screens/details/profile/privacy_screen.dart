@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shout/src/ui/screens/profile/profile_screen.dart';
+import 'package:shout/src/ui/screens/details/profile/profile_screen.dart';
 
-import '../../../config/constants.dart';
-import '../../../my_app.dart';
-import '../../../navigation/app_navigator.dart';
+import '../../../../config/constants.dart';
+import '../../../../navigation/app_navigator.dart';
+import '../main_screen.dart';
 
 
 class PrivacyScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class PrivacyScreenState extends State<PrivacyScreen> {
                       height: 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppNavigator.navigateToScreen(context, ProfileScreen());
+                          AppNavigator.navigateToScreen(context, const MainScreen(index: 3,));
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.white,

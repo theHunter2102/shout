@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shout/src/config/constants.dart';
 class BookmarkWidget extends StatelessWidget {
   final String image;
   final String category;
   final String title;
+  final VoidCallback onTap;
 
   const BookmarkWidget(
       {Key? key,
         required this.image,
         required this.category,
-        required this.title
+        required this.title,
+        required this.onTap
 
       }) : super(key: key);
 
@@ -16,12 +19,13 @@ class BookmarkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         height: 100,
         // padding: EdgeInsets.fromLTRB(0, 3, 3, 3),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-          color: Colors.white,
+          color: AppConstants.bookmarkBgIcon,
         ),
         child: Row(
           // mainAxisSize: MainAxisSize.max,
@@ -29,10 +33,13 @@ class BookmarkWidget extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
+                // height: 150,
+                // width: 150,
                 // padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(image),
+                    image: NetworkImage(image),
+                    fit: BoxFit.cover
                   ),
                   borderRadius: BorderRadius.circular(12)
                 ),
@@ -41,7 +48,7 @@ class BookmarkWidget extends StatelessWidget {
             Expanded(
               flex: 3,
                 child: Container(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 10),
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
@@ -71,6 +78,8 @@ class BookmarkWidget extends StatelessWidget {
                               color: Color(0xFF333647)
                             ),
                             textAlign: TextAlign.left,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shout/src/ui/screens/sign_in_screen.dart';
-import '../../config/constants.dart';
-import '../../navigation/app_navigator.dart';
-import '../widgets/custom_button.dart';
+import '../../../config/constants.dart';
+import '../../../navigation/app_navigator.dart';
+import '../../widgets/custom_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class WelcomeScreen extends StatefulWidget {

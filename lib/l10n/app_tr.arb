@@ -12,7 +12,7 @@
   "categoriesSlogan": "Her kategoride binlerce makale",
   "bookmarks": "Yer imleri",
   "bookmarksSlogan": "Kütüphaneye kaydedilen makaleler",
-  "profile": "Profil",
+  "profile": "profil",
   "notifications": "Bildirimler",
   "languageCountry": "Dil",
   "changePassword": "Şifreyi Değiştir",
@@ -77,7 +77,7 @@
   "signUpSuccess": "Başarıyla kayıt oldunuz",
   "emailExists": "E-posta zaten var",
   "welcomeTo": "Hoş geldiniz",
-  "signUpSlogan": "Merhaba, sanırım buraya yeni geldiniz. Kayıt \\n\"\n                    \"olduktan sonra uygulamayı kullanmaya başlayabilirsiniz.",
+  "signUpSlogan": "Merhaba, sanırım buraya yeni geldiniz. Kayıt                     olduktan sonra uygulamayı kullanmaya başlayabilirsiniz.",
   "username": "Kullanıcı Adı",
   "rePass": "Şifreyi Tekrarla",
   "haveAccount": "Zaten bir hesabınız var mı?",
@@ -88,5 +88,8 @@
   "passwordEmpty": "Şifre boş olamaz",
   "passwordShort": "Şifre en az 6 karakter olmalıdır",
   "confirmPassEmpty": "Lütfen şifrenizi onaylayın",
-  "passNotMatch": "Şifreler eşleşmiyor"
+  "passNotMatch": "Şifreler eşleşmiyor",
+  "invalidEmailOrPass": "Geçersiz e-posta veya şifre",
+  "signInGGFail": "Google ile oturum açma başarısız",
+  "signInFBFail": "Facebook ile oturum açma başarısız"
 }

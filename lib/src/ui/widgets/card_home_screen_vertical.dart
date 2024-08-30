@@ -8,13 +8,15 @@ class CardHomeVertical extends StatelessWidget {
   final String title;
   final VoidCallback onBookmarkPress;
   final VoidCallback onTap;
+  Color colorBookmarkIcon;
 
-  const CardHomeVertical({
+  CardHomeVertical({
     Key? key,
     required this.backgroundImage,
     required this.title,
     required this.onBookmarkPress,
-    required this.onTap
+    required this.onTap,
+    required this.colorBookmarkIcon
   }) : super(key: key);
 
   @override
@@ -87,7 +89,7 @@ class CardHomeVertical extends StatelessWidget {
                              'assets/images/bookmark.svg',
                              width: 24,
                              height: 24,
-                             color: AppConstants.textColor,
+                             color: colorBookmarkIcon,
                            ),) // Phần bookmark
 
                       ],

@@ -1,0 +1,1 @@
+// class ArticleHome extends Provider

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shout/src/ui/screens/sign_up/select_favotrite_screen.dart';
 import 'package:shout/src/ui/widgets/custom_dialog_widget.dart';
 import 'package:shout/src/utils/validators.dart';
 import '../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
@@ -19,8 +21,6 @@ class SignUp extends StatefulWidget
 
 
 class SignUpState extends State<SignUp> {
-
-  // final CustomDialogWidget _customDialogWidget = CustomDialogWidget();
   final FirebaseAuthServices _firebaseAuthService = FirebaseAuthServices();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
@@ -54,15 +54,22 @@ class SignUpState extends State<SignUp> {
     }
 
     try{
-       if(await _firebaseAuthService.createAccount(email, password) != null){
+      final user = await _firebaseAuthService.createAccount(email, password);
+       if(user != null){
+         final userId = user.uid;
+         await FirebaseFirestore.instance.collection('users').doc(userId).set({
+           'username' : username,
+           'email' : email,
+           'password' : password,
+         });
          showDialog(
            context: context,
            builder: (context) => CustomDialogWidget(
-             content: 'Sign up successfully!',
+             content: AppLocalizations.of(context)!.signUpSuccess,
              type: DialogType.success,
-             textButtonSuccess: AppLocalizations.of(context)!.signIn,
+             textButtonSuccess: AppLocalizations.of(context)!.next,
              onSuccessPress: (){
-               AppNavigator.navigateToScreen(context, SignIn());
+               AppNavigator.navigateToScreen(context, FavoriteSelect());
              },
            ),
          );
@@ -71,8 +78,8 @@ class SignUpState extends State<SignUp> {
       if (e is Exception){
         showDialog(
           context: context,
-          builder: (context) => const CustomDialogWidget(
-            content: 'Email already exists',
+          builder: (context) => CustomDialogWidget(
+            content: AppLocalizations.of(context)!.emailExists,
             type: DialogType.error,
           ),
         );

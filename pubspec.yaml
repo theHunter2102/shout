@@ -108,6 +108,7 @@ flutter:
     - assets/images/errorIcon.png
     - assets/images/alertIcon.png
     - assets/images/successIcon.png
+    - assets/images/book-alt.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

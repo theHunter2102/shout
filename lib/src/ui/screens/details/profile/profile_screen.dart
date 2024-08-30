@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shout/src/ui/screens/profile/privacy_screen.dart';
-import 'package:shout/src/ui/screens/profile/terms_screen.dart';
-import '../../../config/constants.dart';
-import '../../../navigation/app_navigator.dart';
-import '../../widgets/custom_button_profile.dart';
-import '../sign_in_screen.dart';
+import 'package:shout/src/auth/user_auth/firebase_auth/firebase_auth_services.dart';
+import 'package:shout/src/ui/screens/details/profile/privacy_screen.dart';
+import 'package:shout/src/ui/screens/details/profile/terms_screen.dart';
+import '../../../../config/constants.dart';
+import '../../../../navigation/app_navigator.dart';
+import '../../../widgets/custom_button_profile.dart';
+import '../../sign_in_screen.dart';
 import 'change_password_screen.dart';
 import 'language_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -18,6 +21,31 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
 
   bool _notificationsEnabled = false;
+  final FirebaseAuthServices _firebaseAuthServices = FirebaseAuthServices();
+  User? user = FirebaseAuth.instance.currentUser;
+  String _email = '';
+  String _username = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUser();
+  }
+  Future<void> getUser() async{
+    if(user != null){
+      setState(() {
+        _email = user!.email!;
+      });
+
+      DocumentSnapshot userData = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
+      // print('User id ${user!.uid} -----------------------------------');
+      setState(() {
+        _username = userData['username'] ?? ' Unknown';
+      });
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +56,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         child: Stack(
             children: [
               Positioned(
-                top: screenHeight! * 0.08,
+                top: 55,
                 left: 20,
                 right: 0,
                 child: Row(
@@ -45,7 +73,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Positioned(
-                  top: screenHeight * 0.15,
+                  top: 110,
                   left: 20,
                   right: 20,
                   child:  Row(
@@ -58,15 +86,26 @@ class ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Himejima', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                          Text('HimejimaGyoumei@gmail.com', style: TextStyle(fontSize: 16)),
+                          Text(
+                          _username,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold
+                              )
+                          ),
+                          Text(
+                              _email,
+                              style: TextStyle(
+                                  fontSize: 16
+                              )
+                          ),
                         ],
                       ),
                     ],
                   ),
               ),
               Positioned(
-                top: screenHeight * 0.30,
+                top: screenHeight! * 0.30,
                 left: 20,
                 right: 20,
                 child: Container(
@@ -107,6 +146,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 setState(() {
                                   _notificationsEnabled = value;
                                 });
+
                               },
                             inactiveTrackColor: AppConstants.textFieldBg,
                             // inactiveThumbColor: Colors.white,
@@ -203,8 +243,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                   textStyle: TextStyle(
                       color: AppConstants.textColor
                   ),
-                  onPressed: () {
-                    AppNavigator.navigateToScreen(context, SignIn());
+                  onPressed: () async {
+                   await _firebaseAuthServices.signOut();
+                   AppNavigator.navigateToScreen(context, SignIn());
                   },
                   color: AppConstants.textFieldBg,
                   borderColor: AppConstants.textFieldBg,
@@ -214,7 +255,8 @@ class ProfileScreenState extends State<ProfileScreen> {
               // Positioned(
               //
               // ),
-            ]),
+            ]
+        ),
       ),
     );
   }

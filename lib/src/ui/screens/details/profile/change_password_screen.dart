@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shout/src/ui/screens/profile/profile_screen.dart';
-import '../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
-import '../../../config/constants.dart';
-import '../../../navigation/app_navigator.dart';
-import '../../../utils/validators.dart';
-import '../../widgets/custom_button.dart';
-import '../../widgets/custom_dialog_widget.dart';
-import '../../widgets/custom_text_field.dart';
-import '../sign_in_screen.dart';
+import 'package:shout/src/ui/screens/details/profile/profile_screen.dart';
+
+import '../../../../auth/user_auth/firebase_auth/firebase_auth_services.dart';
+import '../../../../config/constants.dart';
+import '../../../../navigation/app_navigator.dart';
+import '../../../../utils/validators.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_dialog_widget.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../sign_in_screen.dart';
+import '../main_screen.dart';
+
 
 class ChangePasswordScreen extends StatefulWidget {
   @override
@@ -105,7 +108,7 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       height: 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppNavigator.navigateToScreen(context, ProfileScreen());
+                          AppNavigator.navigateToScreen(context, const MainScreen(index: 3,));
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.white,

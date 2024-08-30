@@ -88,6 +88,8 @@
   "passwordEmpty": "La contraseña no puede estar vacía",
   "passwordShort": "La contraseña debe tener al menos 6 caracteres",
   "confirmPassEmpty": "Por favor, confirma tu contraseña",
-  "passNotMatch": "Las contraseñas no coinciden"
+  "passNotMatch": "Las contraseñas no coinciden",
+  "invalidEmailOrPass": "Correo electrónico o contraseña inválidos",
+  "signInGGFail": "Error al iniciar sesión con Google",
+  "signInFBFail": "Error al iniciar sesión con Facebook"
 }
-
