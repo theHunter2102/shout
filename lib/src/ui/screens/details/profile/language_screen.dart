@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shout/src/controller/main_screen_provider/profile_provider/language_provider.dart';
 import 'package:shout/src/ui/screens/details/main_screen.dart';
 import 'package:shout/src/ui/widgets/custom_language_widget.dart';
 import '../../../../config/constants.dart';
@@ -32,6 +33,7 @@ class LanguageScreenState extends State<LanguageScreen> {
   {
     setState(() {
       _selectedLanguage = language;
+      languageChange().onChangeLanguage(language);
     });
   }
 
